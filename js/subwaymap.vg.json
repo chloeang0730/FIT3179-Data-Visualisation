@@ -1,0 +1,26 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 2000,
+    "height": 1000,
+    "title": "Number of Subway restaurant in the US",
+    "projection": {"type": "equalEarth"},
+    "layer": [
+      {
+        "data": {
+          "url": "ne_110m (2).json",
+          "format": {"type": "topojson", "feature": "1"}
+        },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "subway_locations_in_us.csv"
+        },
+        "mark": {"type": "circle", "tooltip": {"content": "data"}},
+        "encoding": {
+          "longitude": {"field": "longitude", "type": "quantitative"},
+          "latitude": {"field": "latitude", "type": "quantitative"}
+        }
+      }
+    ]
+}
